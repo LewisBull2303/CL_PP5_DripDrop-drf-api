@@ -35,3 +35,44 @@ class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
             distinct=True
         )
     ).order_by('-created_on')
+
+class ProfileList(generics.ListAPIView):
+    """
+    A class view for the Profile List
+    """
+    serializer_class = ProfileSerializer
+    queryset = Profile.objects.annotate(
+        posts_number=Count(
+            'owner__post',
+            distinct=True
+        ),
+        followers_number=Count(
+            'owner__followed',
+            distinct=True
+            ),
+        following_number=Count(
+            'owner__following',
+            distinct=True
+        )
+    ).order_by('-created_on')
+    filter_backends = [
+        filters.OrderingFilter,
+        filters.SearchFilter,
+        DjangoFilterBackend,
+    ]
+    ordering_fields = [
+        'posts_number',
+        'followers_number',
+        'following_number',
+        'owner__following__created_on',
+        'owner__followed__created_on',
+    ]
+    search_fields = [
+        'owner__username',
+    ]
+    filterset_fields = [
+        # filter profiles that are following a specific profile
+        'owner__following__followed__profile',
+        # get profiles that are followed by a specific profile
+        'owner__followed__owner__profile',
+    ]
