@@ -18,5 +18,21 @@ class Profile(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     image = models.ImageField(
-        upload_to='images/', default='../default_avatar_aiks6l'
+        upload_to='images/', default='../Default_pfp_nxyoza'
     )
+
+    class Meta:
+        ordering = ['-created_on']
+    
+    def __str__(self):
+        """
+        Return information who the profile owner is
+        """
+        return f"{self.owner}'s profile"
+    
+    def create_profile(sender, instance, created, **kwargs):
+        if created:
+            Profile.objects.create(owner=instance)
+
+
+    post_save.connect(create_profile, sender=User)
