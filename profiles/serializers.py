@@ -21,3 +21,16 @@ class ProfileSerializer(serializers.ModelSerializer):
     def check_is_owner(self, obj):
         request = self.context["request"]
         return request.user == obj.owner
+
+    class Meta:
+        model = Profile
+        fields = [
+            'id',
+            'owner',
+            'name',
+            'description',
+            'created_on',
+            'updated_on',
+            'image',
+            'is_owner',
+        ]
