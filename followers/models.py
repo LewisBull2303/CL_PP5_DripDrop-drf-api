@@ -22,3 +22,10 @@ class Follower(models.Model):
         related_name='followed'
         )
     created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ['owner', 'followed']
+        ordering = ['-created_on']
+
+    def __str__(self):
+        return f'{self.owner} {self.followed}'
