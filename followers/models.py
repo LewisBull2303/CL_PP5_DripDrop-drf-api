@@ -5,7 +5,7 @@ from django.db import models
 from django.contrib.auth.models import User
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-class Follower(models.Model):
+class Followers(models.Model):
     """
     A class for the follower model
     'Owner' follows other user

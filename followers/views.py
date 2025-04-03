@@ -1,3 +1,10 @@
-from django.shortcuts import render
+# Imports
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# 3rd party:
+from rest_framework import generics, permissions
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# Create your views here.
+# Internal:
+from models import Followers
+from dripdrop.permissions import IsOwnerOrReadOnly
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
