@@ -57,3 +57,13 @@ class PostList(generics.ListCreateAPIView):
         the user thats signed in
         """
         serializer.save(owner=self.request.user)
+
+class PostDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    A class view for post details
+    to enable users to retrieve, update and delete the post
+    """
+    serializer_class = PostSerializer
+    permission_classes = [
+        IsOwnerOrReadOnly
+        ]
