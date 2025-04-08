@@ -51,3 +51,9 @@ class PostList(generics.ListCreateAPIView):
         'owner__profile',  # returns posts owned by the user
         'category'
     ]
+    def perform_create(self, serializer):
+        """
+        function to make the post assigned to 
+        the user thats signed in
+        """
+        serializer.save(owner=self.request.user)
