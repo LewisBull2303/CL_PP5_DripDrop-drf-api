@@ -66,3 +66,10 @@ class PostSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                 'Your image exceeds the width limit of 4096px.'
             )
+        
+        # Image size limit of 2 megabytes
+        if value.size > 1024 * 1024 * 2:
+            raise serializers.ValidationError(
+                'Your image is too large. Max size is 2MB.'
+            )
+        return value
