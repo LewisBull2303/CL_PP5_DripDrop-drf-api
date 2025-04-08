@@ -67,3 +67,13 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [
         IsOwnerOrReadOnly
         ]
+    queryset = Post.objects.annotate(
+        comments_number=Count(
+            'comment',
+            distinct=True
+        ),
+        likes_number=Count(
+            'likes',
+            distinct=True
+        )
+    ).order_by('-created_on')
