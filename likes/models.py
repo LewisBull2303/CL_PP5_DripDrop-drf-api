@@ -22,3 +22,11 @@ class Like(models.Model):
         related_name='likes'
         )
     created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        # unique_together will prevent the user from liking the same post twice
+        unique_together = ['owner', 'post']
+        ordering = ['-created_on']
+
+    def __str__(self):
+        return f'{self.owner} {self.post}'
