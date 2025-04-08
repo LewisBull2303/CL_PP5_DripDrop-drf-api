@@ -15,3 +15,10 @@ class Like(models.Model):
     Related to 'owner' and 'posts'
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    post = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE,
+        related_name='likes'
+        )
+    created_on = models.DateTimeField(auto_now_add=True)
