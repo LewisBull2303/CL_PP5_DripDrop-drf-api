@@ -30,3 +30,8 @@ class PostList(generics.ListCreateAPIView):
             distinct=True
         )
     ).order_by('-created_on')
+    filter_backends = [
+        filters.OrderingFilter,
+        filters.SearchFilter,
+        DjangoFilterBackend,
+    ]
