@@ -13,3 +13,12 @@ class LikeSerializer(serializers.ModelSerializer):
     A class for a LikeSerializer
     """
     owner = serializers.ReadOnlyField(source='owner.username')
+
+    class Meta:
+        model = Like
+        fields = [
+            'id',
+            'owner',
+            'created_on',
+            'post',
+        ]
