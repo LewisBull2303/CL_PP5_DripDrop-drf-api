@@ -18,3 +18,13 @@ class PostSerializer(serializers.ModelSerializer):
     like_id = serializers.SerializerMethodField()
     comments_number = serializers.ReadOnlyField()
     likes_number = serializers.ReadOnlyField()
+
+    def validate_image(self, value):
+        """
+        Validation of the uploaded image size
+        """
+        # Image height limit of 4096 px
+        if value.image.height > 4096:
+            raise serializers.ValidationError(
+                'Your image exceeds the height limit of 4096px.'
+            )
