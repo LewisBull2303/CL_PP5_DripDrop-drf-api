@@ -73,3 +73,7 @@ class PostSerializer(serializers.ModelSerializer):
                 'Your image is too large. Max size is 2MB.'
             )
         return value
+    
+    def get_is_owner(self, obj):
+        request = self.context['request']
+        return request.user == obj.owner
