@@ -31,5 +31,5 @@ class LikeSerializer(serializers.ModelSerializer):
             return super().create(validated_data)
         except IntegrityError:
             raise serializers.ValidationError({
-                'detail': 'possible duplication'
+                'detail': 'duplication detected'
             })
