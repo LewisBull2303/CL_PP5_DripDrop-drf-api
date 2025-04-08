@@ -11,3 +11,12 @@ from .models import Post
 from .serializers import PostSerializer
 from dripdrop.permissions import IsOwnerOrReadOnly
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+class PostList(generics.ListCreateAPIView):
+    """
+    A class view for the PostList
+    """
+    serializer_class = PostSerializer
+    permission_classes = [
+        permissions.IsAuthenticatedOrReadOnly
+    ]
