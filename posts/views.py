@@ -35,3 +35,13 @@ class PostList(generics.ListCreateAPIView):
         filters.SearchFilter,
         DjangoFilterBackend,
     ]
+    ordering_fields = [
+        'comments_number',
+        'likes_number',
+        'likes__created_on',
+    ]
+    search_fields = [
+        'owner__username',
+        'title',
+        'category'
+    ]
