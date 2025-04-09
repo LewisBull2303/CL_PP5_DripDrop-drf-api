@@ -23,3 +23,9 @@ class LikeList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         # owner is the user
         serializer.save(owner=self.request.user)
+
+class LikeDetail(generics.RetrieveDestroyAPIView):
+    """
+    A class for LikeDetail
+    User to be able to retrieve and delete their like
+    """
