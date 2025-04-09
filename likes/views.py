@@ -27,5 +27,6 @@ class LikeList(generics.ListCreateAPIView):
 class LikeDetail(generics.RetrieveDestroyAPIView):
     """
     A class for LikeDetail
-    User to be able to retrieve and delete their like
+    User is able to to retrieve and delete their liked
+    posts
     """
