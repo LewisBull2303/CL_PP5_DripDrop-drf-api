@@ -7,3 +7,8 @@ from django.contrib.humanize.templatetags.humanize import naturaltime
 # Internal:
 from .models import Comment
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+class CommentSerializer(serializers.ModelSerializer):
+    """
+    A class for a CommentSerializer
+    """
