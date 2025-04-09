@@ -23,3 +23,10 @@ class CommentList(generics.ListCreateAPIView):
     filter_backends = [
         DjangoFilterBackend,
     ]
+    filterset_fields = [
+        'post',  # get all comments for a specific post
+        'owner'  # get all comments by a specific user
+    ]
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
