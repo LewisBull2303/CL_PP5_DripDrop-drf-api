@@ -19,3 +19,7 @@ class LikeList(generics.ListCreateAPIView):
         permissions.IsAuthenticatedOrReadOnly
         ]
     queryset = Like.objects.all()
+    
+    def perform_create(self, serializer):
+        # owner is the user
+        serializer.save(owner=self.request.user)
