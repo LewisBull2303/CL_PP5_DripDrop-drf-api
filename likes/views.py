@@ -9,3 +9,9 @@ from .models import Like
 from .serializers import LikeSerializer
 from dripdrop.permissions import IsOwnerOrReadOnly
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+class LikeList(generics.ListCreateAPIView):
+    """
+    A class for the LikeList
+    """
+    serializer_class = LikeSerializer
