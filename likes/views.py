@@ -30,3 +30,8 @@ class LikeDetail(generics.RetrieveDestroyAPIView):
     User is able to to retrieve and delete their liked
     posts
     """
+    serializer_class = LikeSerializer
+    permission_classes = [
+        IsOwnerOrReadOnly
+        ]
+    queryset = Like.objects.all()
