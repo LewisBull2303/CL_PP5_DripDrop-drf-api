@@ -32,3 +32,17 @@ class CommentSerializer(serializers.ModelSerializer):
     # how long ago a comment was updated
     def get_updated_on(self, obj):
         return naturaltime(obj.updated_on)
+
+    class Meta:
+        model = Comment
+        fields = [
+            'id',
+            'owner',
+            'is_owner',
+            'post',
+            'created_on',
+            'updated_on',
+            'content',
+            'profile_id',
+            'profile_image',
+        ]
