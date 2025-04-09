@@ -15,3 +15,7 @@ class LikeList(generics.ListCreateAPIView):
     A class for the LikeList
     """
     serializer_class = LikeSerializer
+    permission_classes = [
+        permissions.IsAuthenticatedOrReadOnly
+        ]
+    queryset = Like.objects.all()
