@@ -22,3 +22,13 @@ class CommentSerializer(serializers.ModelSerializer):
     def get_is_owner(self, obj):
         request = self.context['request']
         return request.user == obj.owner
+    
+    # created_on is formatted to indicate
+    # how long ago a comment was created
+    def get_created_on(self, obj):
+        return naturaltime(obj.created_on)
+    
+    # updated_on is formatted to indicate
+    # how long ago a comment was updated
+    def get_updated_on(self, obj):
+        return naturaltime(obj.updated_on)
