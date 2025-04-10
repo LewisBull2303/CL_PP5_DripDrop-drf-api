@@ -11,3 +11,7 @@ def home(request):
         'status': 200,
         'message': "Welcome to the DripDrop Django REST Framework API"
         })
+
+# dj-rest-auth logout view fix
+@api_view(['POST'])
+def logout_route(request):
