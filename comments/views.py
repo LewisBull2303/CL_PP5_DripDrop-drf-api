@@ -30,3 +30,9 @@ class CommentList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    A class for CommentDetail
+    User to be able to retrieve, edit and delete their comment
+    """
