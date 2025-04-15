@@ -5,14 +5,15 @@ from rest_framework import generics, permissions
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Internal:
-from models import Followers
-from dripdrop.permissions import IsOwnerOrReadOnly
+from .models import Followers
 from .serializers import FollowerSerializer
+from dripdrop.permissions import IsOwnerOrReadOnly
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 class FollowersList(generics.ListCreateAPIView):
     """
-    The class for my followers list
+    A class for FollowersList
     """
     serializer_class = FollowerSerializer
     permission_classes = [
@@ -23,11 +24,11 @@ class FollowersList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
+
 class FollowersDetail(generics.RetrieveDestroyAPIView):
     """
-    The class for the Followers Details
-    Allows users to see a follower or
-    unfollow another user
+    A class for FollowersDetail
+    User to be able to retrieve a follower or unfollow user
     """
     serializer_class = FollowerSerializer
     permission_classes = [
