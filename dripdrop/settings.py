@@ -61,18 +61,28 @@ REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'dripdrop.serializers.CurrentUserSerializer'
 }
 
+X_FRAME_OPTIONS = 'ALLOW-FROM https://ui.dev/amiresponsive'
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
     'localhost',
 ]
 
+if 'CLIENT_ORIGIN' in os.environ:
+    CORS_ALLOWED_ORIGINS = [
+        os.environ.get('CLIENT_ORIGIN')
+    ]
+
+# allow sending cookies in cross-origin requests
+# Users won't be able to authenticate if not set
 CORS_ALLOW_CREDENTIALS = True
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -101,6 +111,7 @@ INSTALLED_APPS = [
     'followers',
 ]
 
+SITE_ID = 1
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
