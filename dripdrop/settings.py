@@ -70,7 +70,6 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    os.environ.get('ALLOWED_HOST'),
     'dripdrop-drf-api-8425aae53a44.herokuapp.com',
 ]
 
