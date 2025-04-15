@@ -71,7 +71,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
-    'https://dripdrop-drf-api-8425aae53a44.herokuapp.com/',
+    'dripdrop-drf-api-8425aae53a44.herokuapp.com',
 ]
 
 if 'CLIENT_ORIGIN' in os.environ:
