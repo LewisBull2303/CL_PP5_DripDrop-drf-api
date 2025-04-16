@@ -73,10 +73,9 @@ ALLOWED_HOSTS = [
     'dripdrop-drf-api-8425aae53a44.herokuapp.com',
 ]
 
-if 'CLIENT_ORIGIN' in os.environ:
-    CORS_ALLOWED_ORIGINS = [
-        os.environ.get('CLIENT_ORIGIN')
-    ]
+CORS_ALLOWED_ORIGINS = [
+    "https://cl-pp5-drip-drop-9c2ba2e18a9c.herokuapp.com",
+]
 
 # allow sending cookies in cross-origin requests
 # Users won't be able to authenticate if not set
