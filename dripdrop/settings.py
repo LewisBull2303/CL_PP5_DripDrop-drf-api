@@ -109,6 +109,10 @@ INSTALLED_APPS = [
     'followers',
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://cl-pp5-drip-drop-9c2ba2e18a9c.herokuapp.com"
+]
+
 SITE_ID = 1
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
