@@ -3,6 +3,8 @@
 # 3rd party:
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework_simplejwt.views import TokenRefreshView
+
 
 # Internal:
 from .views import home, logout_route
@@ -22,5 +24,6 @@ urlpatterns = [
     path('profiles/', include('posts.urls')),
     path('comments/', include('comments.urls')),
     path('likes/', include('likes.urls')),
-    path('followers/', include('followers.urls'))
+    path('followers/', include('followers.urls')),
+    path('dj-rest-auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
