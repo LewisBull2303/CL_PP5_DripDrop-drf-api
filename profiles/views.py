@@ -13,32 +13,10 @@ from .serializers import ProfileSerializer
 from dripdrop.permissions import IsOwnerOrReadOnly
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
-    """
-    A class for the Profile Detail
-    """
-    serializer_class = ProfileSerializer
-    permission_classes = [
-        IsOwnerOrReadOnly
-        ]
-    queryset = Profile.objects.annotate(
-        posts_number=Count(
-            'owner__post',
-            distinct=True
-        ),
-        followers_number=Count(
-            'owner__followed',
-            distinct=True
-            ),
-        following_number=Count(
-            'owner__following',
-            distinct=True
-        )
-    ).order_by('-created_on')
 
 class ProfileList(generics.ListAPIView):
     """
-    A class view for the Profile List
+    A class view for the ProfileList
     """
     serializer_class = ProfileSerializer
     queryset = Profile.objects.annotate(
@@ -76,3 +54,37 @@ class ProfileList(generics.ListAPIView):
         # get profiles that are followed by a specific profile
         'owner__followed__owner__profile',
     ]
+
+
+class ProfileDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    A class for the Profile Detail
+    """
+    serializer_class = ProfileSerializer
+    permission_classes = [
+        IsOwnerOrReadOnly
+        ]
+    queryset = Profile.objects.annotate(
+        posts_number=Count(
+            'owner__post',
+            distinct=True
+        ),
+        followers_number=Count(
+            'owner__followed',
+            distinct=True
+            ),
+        following_number=Count(
+            'owner__following',
+            distinct=True
+        )
+    ).order_by('-created_on')
+
+    def delete(self, request, pk):
+        """
+        Delete a profile by id
+        """
+        user = self.request.user
+        user.delete()
+        return Response(
+            status=status.HTTP_204_NO_CONTENT
+        )
