@@ -20,8 +20,8 @@ urlpatterns = [
     path(
         'dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')
     ),
-    path('posts/', include('profiles.urls')),
-    path('profiles/', include('posts.urls')),
+    path('profiles/', include('profiles.urls')),
+    path('posts/', include('posts.urls')),
     path('comments/', include('comments.urls')),
     path('likes/', include('likes.urls')),
     path('followers/', include('followers.urls')),
