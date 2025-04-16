@@ -5,7 +5,7 @@ from rest_framework import serializers
 
 # Internal:
 from .models import Profile
-from followers.models import Follower
+from followers.models import Followers
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
