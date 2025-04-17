@@ -54,6 +54,8 @@ JWT_AUTH_SECURE = True
 JWT_AUTH_COOKIE = 'my-app-auth'
 JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
 JWT_AUTH_SAMESITE = 'None'
+# For CSRF cookies
+CSRF_COOKIE_SECURE = True  # Ensure CSRF cookies are secure
 
 REST_AUTH_SERIALIZERS = {
     'USER_DETAILS_SERIALIZER': 'dripdrop.serializers.CurrentUserSerializer'
